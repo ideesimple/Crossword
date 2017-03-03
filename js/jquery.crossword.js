@@ -22,10 +22,12 @@
 			
 			var puzz = {}; // put data array in object literal to namespace it into safety
 			puzz.data = entryData;
-			
+			$('.pepyaka').hide();
+			var audio = $("#rave"); 
+			audio[0].pause();
 			// append clues markup after puzzle wrapper div
 			// This should be moved into a configuration object
-			this.after('<div id="puzzle-clues"><h2>Across</h2><ol id="across"></ol><h2>Down</h2><ol id="down"></ol></div>');
+			this.after('<div id="puzzle-clues"><h1>Instructions: Solve the crossword. </h1> <h1>(Click on hints to get the right position, then type)</h1> <h2>Across</h2><ol id="across"></ol><h2>Down</h2><ol id="down"></ol></div>');
 			
 			// initialize some variables
 			var tbl = ['<table id="puzzle">'],
@@ -305,7 +307,20 @@
 							.removeClass('active');
 					
 						$('.clues-active').addClass('clue-done');
-
+						//hack for counting classes
+						console.log($('.done').length);	
+						console.log($('.done'));	
+						console.log($('.clues-active'));
+						console.log($('.clues-active').length);
+											
+						if($('.done').length == 109) {
+							$('#puzzle-wrapper').hide();
+							$('#puzzle-clues').hide();
+							$('.pepyaka').show();
+							var audio = $("#rave"); 
+							audio[0].play();
+							
+						}
 						solved.push(valToCheck);
 						solvedToggle = true;
 						return;
