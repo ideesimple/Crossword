@@ -20,6 +20,8 @@
 				- Answers are best provided in lower-case, and can NOT have spaces - will add support for that later
 			*/
 			
+			// FILL IN HERE - put here the amount of character fields to trigger the win screen!
+			var wordsLength = 9;
 			var puzz = {}; // put data array in object literal to namespace it into safety
 			puzz.data = entryData;
 			$('.pepyaka').hide();
@@ -313,7 +315,7 @@
 						console.log($('.clues-active'));
 						console.log($('.clues-active').length);
 											
-						if($('.done').length == 109) {
+						if($('.done').length == wordsLength) {
 							$('#puzzle-wrapper').hide();
 							$('#puzzle-clues').hide();
 							$('.pepyaka').show();
